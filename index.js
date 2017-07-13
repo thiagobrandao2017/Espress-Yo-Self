@@ -25,7 +25,12 @@ app.use(session({
   }),
 }));
 
+
+app.get('/', (req, res) => {
+  res.redirect('/users/new');
+});
 app.use(require('./resources'));
+
 
 app.listen(port, () => {
   console.log(`Server started on port ${port}`);
