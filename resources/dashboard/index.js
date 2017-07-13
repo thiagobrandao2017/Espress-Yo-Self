@@ -4,7 +4,7 @@ const router = express.Router();
 const controller = require("./controller");
 
 router.route("/")
-    .get(controller.index);
+  .get(controller.index);
 
 
 module.exports = router;
