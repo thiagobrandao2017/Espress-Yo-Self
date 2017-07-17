@@ -12,6 +12,9 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
+  <div class="nav">
+    <a href="/favorites">Go to my favorites</a>
+  </div>
   <div class="container">
     <div class="row">
       <h2>Find a place for coffee near you</h2>
@@ -23,19 +26,27 @@
             <button type="submit" class="btn btn-secondary">Search</button>
           </div>
         </form>
-        </div>
       </div>
     </div>
-    <div class="shop">
-      <% shops.forEach(shop => { %>
-        <h3><%= shop.name %> (<%= shop.rating %>/5)</h3>
-        <img src="<%= shop.image_url %>" style="width:304px;height:228px;" alt="">
-        <h4><%= shop.categories[0].title %>  <%= shop.price %> </h4>
-        <h5><%= shop.location.display_address %></h5>
-        <a href="<%= shop.url %>">Look me up on Yelp!</a>
-        <h4><%= shop.display_phone %></h4>
-      <% }) %>
-    </div>
-
+  </div>
+  <div class="coffee-shop">
+    <% shops.forEach(shop => { %>
+      <h3><%= shop.name %> (<%= shop.rating %>/5)</h3>
+      <img src="<%= shop.image_url %>" style="width:304px;height:228px;" alt="">
+      <h4><%= shop.categories[0].title %>  <%= shop.price %> </h4>
+      <h5><%= shop.location.display_address %></h5>
+      <a href="<%= shop.url %>">Look me up on Yelp!</a>
+      <h4><%= shop.display_phone %></h4>
+      <form method="POST" action="/favorites?location=<%= location %>">
+        <input type="hidden" name="shop[name]" value="<%= shop.name %>">
+        <input type="hidden" name="shop[rating]" value="<%= shop.rating %>">
+        <input type="hidden" name="shop[title]" value="<%= shop.categories[0].title %>">
+        <input type="hidden" name="shop[price]" value="<%= shop.price %>">
+        <input type="hidden" name="shop[address]" value="<%= shop.location.display_address %>">
+        <input type="hidden" name="shop[phone]" value="<%= shop.display_phone %>">
+        <button>save</button>
+      </form>
+    <% }) %>
+  </div>
   </body>
   </html>

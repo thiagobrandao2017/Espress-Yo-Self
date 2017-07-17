@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<body>
+  <h1>These are my favorite shops</h1>
+
+  <div class="nav">
+    <a href="/dashboard">Go back</a>
+  </div>
+  <div class="coffee-shop">
+    <% shops.forEach(shop => { %>
+      <h3><%= shop.name %> (<%= shop.rating %>/5)</h3>
+      <img src="<%= shop.image_url %>" style="width:304px;height:228px;" alt="">
+      <h4><%= shop.title %>  <%= shop.price %> </h4>
+      <h5><%= shop.address %></h5>
+      <h4><%= shop.phone %></h4>
+
+      <form method="POST" action="favorites/delete?_method=DELETE">
+        <input type="hidden" name="shop[id]" value="<%= shop.id %>">
+        <button>Delete</button>
+      </form>
+
+      <% }) %>
+    </div>
+  </body>
+  </html>
