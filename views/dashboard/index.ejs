@@ -3,18 +3,26 @@
 <head>
   <meta charset="utf-8">
   <title>Espress Yo Self</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css">
 
-  <!-- jQuery library -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
 
-  <!-- Latest compiled JavaScript -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
 </head>
 <body>
-  <div class="nav">
-    <a href="/favorites">Go to my favorites</a>
-  </div>
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">Espress Yo Self</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="favorites">My Favorites</a></li>
+        <li><a href="users/new">Sign Up</a></li>
+        <li><a href="users/login">Login</a></li>
+      </ul>
+    </div>
+  </nav>
   <div class="container">
     <div class="row">
       <h2>Find a place for coffee near you</h2>
@@ -29,23 +37,35 @@
       </div>
     </div>
   </div>
-  <div class="coffee-shop">
-    <% shops.forEach(shop => { %>
-      <h3><%= shop.name %> (<%= shop.rating %>/5)</h3>
-      <img src="<%= shop.image_url %>" style="width:304px;height:228px;" alt="">
-      <h4><%= shop.categories[0].title %>  <%= shop.price %> </h4>
-      <h5><%= shop.location.display_address %></h5>
-      <a href="<%= shop.url %>">Look me up on Yelp!</a>
-      <h4><%= shop.display_phone %></h4>
+    <div class="row">
+      <% shops.forEach(shop => { %>
+    <div class="col s4">
+      <div class="card" style="width: 25rem; height ">
+        <img class="card-img-top" src="<%= shop.image_url %>" style="width: 25rem; height: 17rem" alt="Card image cap">
+        <div class="card-block">
+          <h4 class="card-title"><%= shop.name %></h4>
+          <p class="card-text">(<%= shop.rating %>/5)</p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><%= shop.categories[0].title %>  <%= shop.price %></li>
+          <li class="list-group-item"><%= shop.location.display_address %></li>
+          <li class="list-group-item"><%= shop.display_phone %></li>
+        </ul>
+        <div class="card-block">
+          <a href="<%= shop.url %>" class="card-link">See me on Yelp</a>
+        </div>
       <form method="POST" action="/favorites?location=<%= location %>">
         <input type="hidden" name="shop[name]" value="<%= shop.name %>">
         <input type="hidden" name="shop[rating]" value="<%= shop.rating %>">
+        <input type="hidden" name="shop[image_url]" value="<%= shop.image_url %>">
         <input type="hidden" name="shop[title]" value="<%= shop.categories[0].title %>">
         <input type="hidden" name="shop[price]" value="<%= shop.price %>">
         <input type="hidden" name="shop[address]" value="<%= shop.location.display_address %>">
         <input type="hidden" name="shop[phone]" value="<%= shop.display_phone %>">
-        <button>save</button>
+        <button class="btn waves-effect waves-light" type="submit" name="action">Save</button>
       </form>
+    </div>
+    </div>
     <% }) %>
   </div>
   </body>

@@ -26,10 +26,10 @@ User.findByEmail = (email) => {
 User.saveShop = (user, shop) => {
   return db.one(`
     INSERT INTO favorites
-    (user_id, name, rating, title, price, address, phone)
+    (user_id, name, image_url, rating, title, price, address, phone)
     VALUES
-    ($1, $2, $3, $4, $5, $6, $7)
-    RETURNING *;`, [user.id,shop.name,shop.rating,shop.title,shop.price,shop.address,shop.phone]);
+    ($1, $2, $3, $4, $5, $6, $7, $8)
+    RETURNING *;`, [user.id,shop.name,shop.image_url,shop.rating,shop.title,shop.price,shop.address,shop.phone]);
 };
 
 User.showFavorites = (user_id) => {

@@ -2,28 +2,55 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title></title>
+  <title>Espress Yo Self</title>
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css">
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+
 </head>
 <body>
-  <h1>These are my favorite shops</h1>
-
-  <div class="nav">
-    <a href="/dashboard">Go back</a>
-  </div>
-  <div class="coffee-shop">
-    <% shops.forEach(shop => { %>
-      <h3><%= shop.name %> (<%= shop.rating %>/5)</h3>
-      <img src="<%= shop.image_url %>" style="width:304px;height:228px;" alt="">
-      <h4><%= shop.title %>  <%= shop.price %> </h4>
-      <h5><%= shop.address %></h5>
-      <h4><%= shop.phone %></h4>
-
-      <form method="POST" action="favorites/delete?_method=DELETE">
-        <input type="hidden" name="shop[id]" value="<%= shop.id %>">
-        <button>Delete</button>
-      </form>
-
-      <% }) %>
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">Espress Yo Self</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="/dashboard">Go Back</a></li>
+        <li><a href="users/login">Logout</a></li>
+      </ul>
     </div>
+  </nav>
+  <body>
+
+    <div class="title">
+        <h3>These are my favorite shops</h3>
+    </div>
+
+
+    <div class="row">
+      <% shops.forEach(shop => { %>
+        <div class="col s4">
+          <div class="card" style="width: 25rem; height ">
+            <img class="card-img-top" src="<%= shop.image_url %>" style="width: 25rem; height: 17rem" alt="Card image cap">
+            <div class="card-block">
+              <h4 class="card-title"><%= shop.name %></h4>
+              <p class="card-text">(<%= shop.rating %>/5)</p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><%= shop.title %>  <%= shop.price %></li>
+              <li class="list-group-item"><%= shop.address %></li>
+              <li class="list-group-item"><%= shop.phone %></li>
+            </ul>
+            <form method="POST" action="favorites/delete?_method=DELETE">
+              <input type="hidden" name="shop[id]" value="<%= shop.id %>">
+                <button class="btn waves-effect waves-light" type="submit" name="action">Delete</button>
+            </form>
+          </div>
+        </div>
+        <% }) %>
+      </div>
+
   </body>
   </html>

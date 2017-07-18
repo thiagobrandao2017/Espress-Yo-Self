@@ -16,6 +16,7 @@ DROP TABLE IF EXISTS favorites;
 CREATE TABLE favorites
 (id BIGSERIAL PRIMARY KEY,
 user_id INT REFERENCES users(id),
+image_url VARCHAR(255),
 name VARCHAR(255),
 rating VARCHAR(255),
 title VARCHAR(255),
