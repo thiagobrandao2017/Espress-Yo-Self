@@ -1,5 +1,3 @@
-CREATE DATABASE shops_db;
-
 DROP TABLE IF EXISTS favorites;
 DROP TABLE IF EXISTS users;
 
