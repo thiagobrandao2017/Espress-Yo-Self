@@ -1,7 +1,6 @@
-DROP DATABASE IF EXISTS shops_db;
 CREATE DATABASE shops_db;
-\c shops_db
 
+DROP TABLE IF EXISTS favorites;
 DROP TABLE IF EXISTS users;
 
 CREATE TABLE users
@@ -11,7 +10,7 @@ last_name VARCHAR(255),
 email VARCHAR(255),
 password VARCHAR(255));
 
-DROP TABLE IF EXISTS favorites;
+
 
 CREATE TABLE favorites
 (id BIGSERIAL PRIMARY KEY,
