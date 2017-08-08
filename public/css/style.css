@@ -1,6 +1,9 @@
 nav {
   background-color: black;
   margin-bottom: 30px;
+  font-family: 'Gloria Hallelujah', cursive;
+  padding-left: 60px;
+  padding-right: 60px;
 }
 
 body {
@@ -24,4 +27,47 @@ input {
 
 .title {
   color: white;
+}
+
+.card-title {
+  text-align: center;
+  font-family: 'Righteous', cursive;
+}
+
+.card-text {
+  text-align: center;
+  font-family: 'Righteous', cursive;
+}
+
+.list-group-item {
+  text-align: center;
+  font-family: 'Righteous', cursive;
+}
+.card-block {
+  text-align: center;
+  font-family: 'Righteous', cursive;
+}
+
+#form {
+  padding-bottom: 20px;
+  padding-top: 20px;
+  text-align: center;
+}
+
+.row {
+  padding-left: 100px;
+  padding-right: 100px;
+}
+
+
+h2 {
+  font-family: 'Fredoka One', cursive;
+  text-align: center;
+}
+
+.shop-title {
+  font-size: 25px;
+}
+.price {
+  font-size: 20px;
 }

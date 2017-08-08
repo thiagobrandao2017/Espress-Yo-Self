@@ -1,10 +1,10 @@
-const express = require('express'),
-  app = express(),
-  bodyParser = require('body-parser'),
-  session = require('express-session'),
-  methodOverride = require('method-override'),
-  MongoStore = require('connect-mongo')(session),
-  port = process.env.PORT || 5000;
+const express = require('express');
+const app = express();
+const bodyParser = require('body-parser');
+const session = require('express-session');
+const methodOverride = require('method-override');
+const MongoStore = require('connect-mongo')(session);
+const port = process.env.PORT || 5000;
 
 require('dotenv').config();
 
@@ -29,6 +29,7 @@ app.use(session({
 app.get('/', (req, res) => {
   res.redirect('/users/new');
 });
+
 app.use(require('./resources'));
 
 

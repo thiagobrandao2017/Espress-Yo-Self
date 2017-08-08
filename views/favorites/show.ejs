@@ -2,6 +2,10 @@
 <html>
 <head>
   <meta charset="utf-8">
+  <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Righteous" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">
+  <title>Espress Yo Self</title>
+
   <title>Espress Yo Self</title>
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css">
@@ -25,7 +29,7 @@
   <body>
 
     <div class="title">
-        <h3>These are my favorite shops</h3>
+      <h2>My favorite shops</h2>
     </div>
 
 
@@ -36,21 +40,26 @@
             <img class="card-img-top" src="<%= shop.image_url %>" style="width: 25rem; height: 17rem" alt="Card image cap">
             <div class="card-block">
               <h4 class="card-title"><%= shop.name %></h4>
-              <p class="card-text">(<%= shop.rating %>/5)</p>
+              <p class="card-text">Rating: (<%= shop.rating %>/5)</p>
             </div>
             <ul class="list-group list-group-flush">
-              <li class="list-group-item"><%= shop.title %>  <%= shop.price %></li>
+              <div class="shop-title">
+                <li class="list-group-item"><%= shop.title %></li>
+              </div>
+              <div class="price">
+                <li class="list-group-item">Price: <%= shop.price %></li>
+              </div>
               <li class="list-group-item"><%= shop.address %></li>
               <li class="list-group-item"><%= shop.phone %></li>
             </ul>
-            <form method="POST" action="favorites/delete?_method=DELETE">
+            <form id="form" method="POST" action="favorites/delete?_method=DELETE">
               <input type="hidden" name="shop[id]" value="<%= shop.id %>">
-                <button class="btn waves-effect waves-light" type="submit" name="action">Delete</button>
+              <button class="btn waves-effect waves-light" type="submit" name="action">Delete</button>
             </form>
           </div>
         </div>
         <% }) %>
       </div>
 
-  </body>
-  </html>
+    </body>
+    </html>
